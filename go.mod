@@ -1,10 +1,8 @@
 module github.com/dgrr/fastws
 
-go 1.14
+go 1.15
 
 require (
-	github.com/gobwas/ws v1.0.4
-	github.com/gorilla/websocket v1.4.2
-	github.com/valyala/fasthttp v1.12.0
-	nhooyr.io/websocket v1.8.6
+	github.com/buaazp/fasthttprouter v0.1.1
+	github.com/valyala/fasthttp v1.21.0
 )
