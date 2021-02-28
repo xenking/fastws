@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/buaazp/fasthttprouter"
-	"github.com/dgrr/fastws"
 	"github.com/valyala/fasthttp"
+	"github.com/xenking/fastws"
 )
 
 type Broadcaster struct {

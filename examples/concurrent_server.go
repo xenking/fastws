@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/buaazp/fasthttprouter"
-	"github.com/dgrr/fastws"
 	"github.com/valyala/fasthttp"
+	"github.com/xenking/fastws"
 )
 
 // This code will show you something you cannot do with other libraries

@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/dgrr/fasthttprouter"
-	"github.com/dgrr/fastws"
+	"github.com/buaazp/fasthttprouter"
 	"github.com/valyala/fasthttp"
+	"github.com/xenking/fastws"
 )
 
 func main() {

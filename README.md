@@ -1,11 +1,11 @@
 # fastws
 
-[![Build Status](https://travis-ci.com/dgrr/fastws.svg?branch=master)](https://travis-ci.com/dgrr/fastws)
-[![codecov](https://codecov.io/gh/dgrr/fastws/branch/master/graph/badge.svg)](https://codecov.io/gh/dgrr/fastws)
+[![Build Status](https://travis-ci.com/xenking/fastws.svg?branch=master)](https://travis-ci.com/xenking/fastws)
+[![codecov](https://codecov.io/gh/xenking/fastws/branch/master/graph/badge.svg)](https://codecov.io/gh/xenking/fastws)
 
 WebSocket library for [fasthttp](https://github.com/valyala/fasthttp). And now for net/http too.
 
-Checkout [examples](https://github.com/dgrr/fastws/blob/master/examples) to inspire yourself.
+Checkout [examples](https://github.com/xenking/fastws/blob/master/examples) to inspire yourself.
 
 # Why another WebSocket package?
 
@@ -16,21 +16,21 @@ Following the fasthttp philosophy this library tries to avoid extra-allocations
 while providing concurrent access to Read/Write operations and stable API to be used
 in production allowing low level access to the WebSocket frames.
 
-To see an example of what this package CAN do that others DONT checkout [this](https://github.com/dgrr/fastws/blob/master/examples/concurrent_server.go)
-or [this](https://github.com/dgrr/fastws/blob/master/examples/broadcast.go) examples.
+To see an example of what this package CAN do that others DONT checkout [this](https://github.com/xenking/fastws/blob/master/examples/concurrent_server.go)
+or [this](https://github.com/xenking/fastws/blob/master/examples/broadcast.go) examples.
 
 # How it works? (Server)
 
 Okay. It's easy. You have an
-[Upgrader](https://godoc.org/github.com/dgrr/fastws#Upgrader)
+[Upgrader](https://godoc.org/github.com/xenking/fastws#Upgrader)
 which is used to upgrade your connection.
 You must specify the
-[Handler](https://godoc.org/github.com/dgrr/fastws#Upgrader.Handler)
+[Handler](https://godoc.org/github.com/xenking/fastws#Upgrader.Handler)
 to handle the request.
 
 If you just want a WebSocket connection and don't want to be
 a WebSocket expert you can just
-use [Upgrade](https://godoc.org/github.com/dgrr/fastws#Upgrade) function passing the
+use [Upgrade](https://godoc.org/github.com/xenking/fastws#Upgrade) function passing the
 handler.
 
 ```go
@@ -45,17 +45,17 @@ func wsHandler(conn *Conn) {
 
 After this point you can handle your awesome WebSocket connection.
 The connection is automatically
-[closed](https://github.com/dgrr/fastws/blob/master/upgrader.go#L137)
+[closed](https://github.com/xenking/fastws/blob/master/upgrader.go#L137)
 by fastws when you exit your handler. YES! You are able to close
 your connection if you want to send a
-[close](https://godoc.org/github.com/dgrr/fastws#Conn.Close) message to the peer.
+[close](https://godoc.org/github.com/xenking/fastws#Conn.Close) message to the peer.
 
 If you are looking for a low level usage of the library you can use the
-[Frame](https://godoc.org/github.com/dgrr/fastws#Frame) structure
+[Frame](https://godoc.org/github.com/xenking/fastws#Frame) structure
 to handle frame by frame in a WebSocket connection.
 Also you can use
-[Conn.ReadFrame](https://godoc.org/github.com/dgrr/fastws#Conn.ReadFrame) or
-[Conn.NextFrame](https://godoc.org/github.com/dgrr/fastws#Conn.NextFrame) to read
+[Conn.ReadFrame](https://godoc.org/github.com/xenking/fastws#Conn.ReadFrame) or
+[Conn.NextFrame](https://godoc.org/github.com/xenking/fastws#Conn.NextFrame) to read
 frame by frame from your peers.
 
 ```go
@@ -77,15 +77,15 @@ func wsHandler(conn *Conn) {
 }
 ```
 
-All of the [Conn](https://godoc.org/github.com/dgrr/fastws#Conn)
+All of the [Conn](https://godoc.org/github.com/xenking/fastws#Conn)
 functions are safe-concurrent. Ready to be used from different goroutines.
 If you want to deal with the frames you can either use
-[Conn](https://godoc.org/github.com/dgrr/fastws#Conn) or your own net.Conn,
+[Conn](https://godoc.org/github.com/xenking/fastws#Conn) or your own net.Conn,
 but remember to manage concurrency when using a net.Conn
 
 # How it works? (Client)
 
-Just call [Dial](https://godoc.org/github.com/dgrr/fastws#Dial).
+Just call [Dial](https://godoc.org/github.com/xenking/fastws#Dial).
 
 ```go
 conn, err := fastws.Dial("ws://localhost:8080/ws")
@@ -97,7 +97,7 @@ conn.WriteString("Hello")
 
 # fastws vs gorilla vs nhooyr vs gobwas
 
-| Features | [fastws](https://github.com/dgrr/fastws) | [Gorilla](https://github.com/savsgio/websocket)| [Nhooyr](https://github.com/nhooyr/websocket) | [gowabs](https://github.com/gobwas/ws) |
+| Features | [fastws](https://github.com/xenking/fastws) | [Gorilla](https://github.com/savsgio/websocket)| [Nhooyr](https://github.com/nhooyr/websocket) | [gowabs](https://github.com/gobwas/ws) |
 | --- | --- | --- | --- | --- |
 | Concurrent R/W                          | Yes            | No           | No. Only writes | No           |
 | Passes Autobahn Test Suite              | Mostly         | Yes          | Yes             | Mostly       |    
@@ -205,4 +205,4 @@ Packet rate estimate: 189499.0↓, 66535.5↑ (1↓, 1↑ TCP MSS/op)
 Test duration: 10.0052 s.
 ```
 
-The source files are in [this](https://github.com/dgrr/fastws/tree/master/stress-tests/) folder.
+The source files are in [this](https://github.com/xenking/fastws/tree/master/stress-tests/) folder.
